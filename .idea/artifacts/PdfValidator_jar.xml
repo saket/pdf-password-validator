@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PdfValidator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PdfValidator_jar</output-path>
+    <root id="archive" name="PdfView.jar">
+      <element id="module-output" name="PdfValidator" />
+    </root>
+  </artifact>
+</component>
