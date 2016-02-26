@@ -14,7 +14,7 @@ public enum PdfValidationResult {
     /**
      * The Pdf is password protected and the entered password is wrong.
      */
-    INVALID_PASSWORD,
+    INCORRECT_PASSWORD,
 
     /**
      * Bastard uploaded a file that we just cannot understand.
