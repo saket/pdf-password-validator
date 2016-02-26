@@ -1,6 +1,6 @@
 package com.sun.pdfview;
 
-public enum ValidationResult {
+public enum PdfValidationResult {
     /**
      * Valid Pdf + Valid password (if it was password protected)
      */
