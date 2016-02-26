@@ -11,9 +11,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 /**
- * Utility class for checking:
- * 1. Whether or not a Pdf is password protected
- * 2. Whether a password is valid for a Pdf.
+ * Utility class for checking the validity of a Pdf file and / or its password.
  */
 public class PdfValidator {
 
@@ -23,9 +21,9 @@ public class PdfValidator {
      * Validates the Pdf file and checks if it cna be unlocked using <var>password</var>
      * (if it's password protected).
      *
-     * @return See {@link ValidationResult}
+     * @return See {@link PdfValidationResult}
      */
-    public static ValidationResult validate(File pdfFile, String password) {
+    public static PdfValidationResult validate(File pdfFile, String password) {
 
         ByteBuffer byteBuffer;
         try {
@@ -33,22 +31,22 @@ public class PdfValidator {
 
         } catch (IOException e) {
             e.printStackTrace();
-            return ValidationResult.FILE_NOT_FOUND;
+            return PdfValidationResult.FILE_NOT_FOUND;
         }
 
         try {
             new PDFFile(byteBuffer, new PDFPassword(password));
-            return ValidationResult.VALID;
+            return PdfValidationResult.VALID;
 
         } catch (PDFAuthenticationFailureException authException) {
-            return ValidationResult.INVALID_PASSWORD;
+            return PdfValidationResult.INCORRECT_PASSWORD;
 
         } catch (InvalidPdfException invalidPdfException) {
-            return ValidationResult.INVALID_PDF;
+            return PdfValidationResult.INVALID_PDF;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return ValidationResult.UNKNOWN;
+            return PdfValidationResult.UNKNOWN;
         }
 
     }
@@ -59,7 +57,7 @@ public class PdfValidator {
      * (isPasswordProtected()) as it is an expensive method.
      */
     public static boolean isPasswordProtected(File file) {
-        return validate(file, null) == ValidationResult.INVALID_PASSWORD;
+        return validate(file, null) == PdfValidationResult.INCORRECT_PASSWORD;
     }
 
     static class FileUtils {
