@@ -52,12 +52,13 @@ public class PDFDocCharsetEncoder extends CharsetEncoder {
             new HashMap<Character,Byte>();
     static
     {
-        for (byte i = 0; i < PDFStringUtil.PDF_DOC_ENCODING_MAP.length; ++i) {
+       for (int i = 0; i < PDFStringUtil.PDF_DOC_ENCODING_MAP.length; i++) {
             final char c = PDFStringUtil.PDF_DOC_ENCODING_MAP[i];
             final boolean identical = (c == i);
             IDENT_PDF_DOC_ENCODING_MAP[i] = identical;
             if (!identical) {
-                EXTENDED_TO_PDF_DOC_ENCODING_MAP.put(c, i);
+                byte value = (byte) PDFStringUtil.PDF_DOC_ENCODING_MAP[i];//support for special character in pdf password
+                EXTENDED_TO_PDF_DOC_ENCODING_MAP.put(c, value);
             }
         }
     }
