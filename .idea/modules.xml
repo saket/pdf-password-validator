@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PdfValidator.iml" filepath="$PROJECT_DIR$/PdfValidator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pdf-password-validator.iml" filepath="$PROJECT_DIR$/Pdf-password-validator.iml" />
     </modules>
   </component>
 </project>
